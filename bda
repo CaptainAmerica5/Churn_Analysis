@@ -30,3 +30,6 @@ for line in sys.stdin:
       continue
  avg=sum1/count
 print(f’ average  : {avg} ‘)
+
+
+https://github.com/Jake-Peralt-a
