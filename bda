@@ -7,3 +7,26 @@ hadoop jar '/home/hdoop/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar
 
 
 cat input.txt |python3 mapper.py|sort|python3 reducer.py
+
+
+#!/user/bin/python3
+"""reducer.py"""
+
+import sys
+sum1 = 0
+count = 0
+word = None
+for line in sys.stdin:
+  #remove leading and trailling whitespaces
+  line = line.strip()
+  #parse the input we got from mapper.py
+  word,count = line.split('\t',1)
+  try:
+      word = int(word)
+      count+=1
+      sum1+=word
+  except ValueError:
+      #count was not a number so silently
+      continue
+ avg=sum1/count
+print(f’ average  : {avg} ‘)
